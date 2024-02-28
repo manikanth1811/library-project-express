@@ -18,13 +18,13 @@ app.use(
     },
   })
 );
-const RateLimit = require("express-rate-limit");
-const limiter = RateLimit({
-  windowMs: 1 * 60 * 1000, // 1 minute
-  max: 20,
-});
+// const RateLimit = require("express-rate-limit");
+// const limiter = RateLimit({
+//   windowMs: 1 * 60 * 1000, // 1 minute
+//   max: 20,
+// });
 // Apply rate limiter to all requests
-app.use(limiter);
+// app.use(limiter);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
