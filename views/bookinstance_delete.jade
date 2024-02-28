@@ -1,0 +1,32 @@
+extends layout 
+
+block content 
+
+    h1 Do you want to delete the Book Instance 
+
+    p #[strong Author: ]
+        a(href=bookInstanceDetails.book.author.url) #{bookInstanceDetails.book.author.name}
+    p #[strong Summary:] #{bookInstanceDetails.book.summary}
+    p #[strong ISBN:] #{bookInstanceDetails.book.isbn}
+    p #[strong Genre: ]
+    each val, index in bookInstanceDetails.book.genre
+        a(href=val.url) #{val.name}
+        if index < bookInstanceDetails.book.genre.length - 1
+            |,&nbsp;
+    hr
+    if bookInstanceDetails.status=='Available'
+        p.text-success #{bookInstanceDetails.status}
+    else if bookInstanceDetails.status=='Maintenance'
+        p.text-danger #{bookInstanceDetails.status}
+    else
+        p.text-warning #{bookInstanceDetails.status}
+    p #[strong Imprint:] #{bookInstanceDetails.imprint}
+    if bookInstanceDetails.status!='Available'
+        p #[strong Due back:] #{bookInstanceDetails.due_back}
+    p #[strong Id: ]
+        a(href=bookInstanceDetails.url) #{bookInstanceDetails._id}
+    h4  
+        a(href=bookInstanceDetails.book.url) #{bookInstanceDetails.book.title}
+
+    form(method="POST" action=bookInstanceDetails.url+"/delete")
+        button.btn.btn-danger(type="submit") Delete

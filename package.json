@@ -1,0 +1,34 @@
+{
+  "name": "library-project-express",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "start": "node --env-file=.env ./bin/www",
+    "devstart": "nodemon npm run start",
+    "serverstart": "SET DEBUG=library-project-express:* & npm run devstart"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "http-errors": "~1.6.3",
+    "jade": "^1.11.0",
+    "luxon": "^3.4.4",
+    "mongoose": "^8.2.0",
+    "morgan": "~1.9.1",
+    "nodeman": "^1.1.2",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

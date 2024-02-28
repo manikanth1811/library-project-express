@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  h1 Genre: #{genre_details.name}
+
+  hr
+  p
+    a.text-danger(href=genre_details.url+'/delete') delete
+  p 
+    a.text-warning(href=genre_details.url+'/update') update
+    
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Books
+    if books_detail.length
+      dl
+        each book in books_detail
+          dt
+            a(href=book.url) #{book.title}
+          dd #{book.summary}
+    else
+      p This genre has no books.
+
+

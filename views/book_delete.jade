@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+    h1 Do you want to delete the book?
+    h3 #{bookDetail.title}
+    p #{bookDetail.author.name}
+    hr
+
+    if bookInstanceDetails.length
+        h3 You need to delete it's instances to proceed 
+        each val in bookInstanceDetails
+            hr
+            if val.status=='Available'
+                p.text-success #{val.status}
+            else if val.status=='Maintenance'
+                p.text-danger #{val.status}
+            else
+                p.text-warning #{val.status}
+            p #[strong Imprint:] #{val.imprint}
+            if val.status!='Available'
+                p #[strong Due back:] #{val.due_back}
+            p #[strong Id: ]
+                a(href=val.url) #{val._id}
+    else 
+        form(method="post" action=bookDetail.url+'/delete') 
+            button.btn.btn-danger(type="submit") Delete
